@@ -1,4 +1,15 @@
-BaggingVal <- function(model_list, x_val, y_val, iteration = 1000){
+#' baggingVal function
+#'
+#' This function allows you to do bagging on the validation set
+#' @param model the list of deep learning models returned by model in keras R
+#' @param x_val a dataframe of features to be used as validation set
+#' @param y_val a vector indiates what is the label
+#' @param iteration the total number of bootstrap to be used, the default value is 1000
+#' @export
+#' @examples
+#' baggingVal(model_list, x_val, y_val)
+
+baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
   #How many samples are used in the validation dataset
   val_size = nrow(x_val)
 
@@ -40,7 +51,7 @@ BaggingVal <- function(model_list, x_val, y_val, iteration = 1000){
   return(res)
 }
 
-BaggingTest <- function(res, model_list, x_test, y_test, start_pos = 1, end_pos = 1000){
+baggingTest <- function(res, model_list, x_test, y_test, start_pos = 1, end_pos = 1000){
   #The matrix format to store all the test result for the candidate models
   result = NULL
 
@@ -108,7 +119,7 @@ BaggingTest <- function(res, model_list, x_test, y_test, start_pos = 1, end_pos 
 }
 
 
-PerformanceEvaluate <- function(model_list, x_test, y_test, start_pos, end_pos){
+performanceEvaluate <- function(model_list, x_test, y_test, start_pos, end_pos){
   #Number of the candidate models
   model_num = length(model_list)
 
