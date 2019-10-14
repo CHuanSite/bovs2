@@ -6,8 +6,6 @@
 #' @param y_val a vector indiates what is the label
 #' @param iteration the total number of bootstrap to be used, the default value is 1000
 #' @export
-#' @examples
-#' baggingVal(model_list, x_val, y_val)
 
 baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
   #How many samples are used in the validation dataset
@@ -63,8 +61,6 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
 #' @param x_test A dataframe contains the features used by the bagginTest function
 #' @param y_test A vector contains the labels used by baggingTest function
 #' @export
-#' @example
-#' baggingTest(res, model_list, x_test, y_test)
 
 baggingTest <- function(res, model_list, x_test, y_test){
   ## The start point and end point of the res used in baggingVal
@@ -144,8 +140,6 @@ baggingTest <- function(res, model_list, x_test, y_test){
 #' @param x_test A dataframe contains the features used by the performanceEvaluate function
 #' @param y_test A vector contains the labels used by baggingTest function
 #' @export
-#' @example
-#' performanceEvaluate(model_list, x_test, y_test)
 
 performanceEvaluate <- function(model_list, x_test, y_test){
   ## The start point and end poitn of the evaluation procedure
