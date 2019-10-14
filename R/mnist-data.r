@@ -10,3 +10,4 @@
 #'
 #' @examples
 #' data(mnist)
+"mnist"
