@@ -18,6 +18,3 @@ baggingVal(model_list, x_val, y_val, iteration = 1000)
 \description{
 This function allows you to do bagging on the validation set
 }
-\examples{
-baggingVal(model_list, x_val, y_val)
-}

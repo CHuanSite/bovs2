@@ -4,9 +4,7 @@ Title: Bagging on the Validation Set for keras R
 Version: 0.1.0
 Author: Huan Chen
 Maintainer: Huan Chen <hchen130@jhu.edu>
-Description: This is a R package developped for keras R which can be used to improve the model performance by applying a method called 
-bagging on the validation set. This method is achieved by doing bagging on the validation to choose the weight given to each neural network trained 
-by the keras R model.
+Description: This is a R package developped for keras R which can be used to improve the model performance by applying a method called bagging on the validation set. This method is achieved by doing bagging on the validation to choose the weight given to each neural network trained by the keras R model.
 License: MIT
 Encoding: UTF-8
 LazyData: true
