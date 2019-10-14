@@ -51,7 +51,26 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
   return(res)
 }
 
-baggingTest <- function(res, model_list, x_test, y_test, start_pos = 1, end_pos = 1000){
+
+
+
+#'baggingTest function
+#'
+#'This function allows you to make use of the training result obtained by bagginVal to test the performance of new model
+#'
+#'@param res A vector obtained by the baggingVal function,  the length is equal to the number of bootstrap done by the baggingVal function
+#'@param model_list The list is same as the one used in baggingVal function to produce res
+#'@param x_test A dataframe contains the features used by the bagginTest function
+#'@param y_test A vector contains the labels used by baggingTest function
+#'@export
+#'@example
+#'baggingTest(res, model_list, x_test, y_test)
+
+baggingTest <- function(res, model_list, x_test, y_test){
+  ## The start point and end point of the res used in baggingVal
+  start_pos = 1
+  end_pos = length(res)
+
   #The matrix format to store all the test result for the candidate models
   result = NULL
 
