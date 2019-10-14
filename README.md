@@ -17,4 +17,4 @@ To obatin the latest version of the `bovs2` package, access the following site
 #install.packages("devtools")
 devtools::install_github("CHuanSite/bovs2")
 ```
-
+## Example
