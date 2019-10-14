@@ -1,7 +1,7 @@
 #' baggingVal function
 #'
 #' This function allows you to do bagging on the validation set
-#' @param model the list of deep learning models returned by model in keras R
+#' @param model the list of deep learning models object returned by model in keras R
 #' @param x_val a dataframe of features to be used as validation set
 #' @param y_val a vector indiates what is the label
 #' @param iteration the total number of bootstrap to be used, the default value is 1000
@@ -58,13 +58,13 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
 #'
 #'This function allows you to make use of the training result obtained by bagginVal to test the performance of new model
 #'
-#'@param res A vector obtained by the baggingVal function,  the length is equal to the number of bootstrap done by the baggingVal function
-#'@param model_list The list is same as the one used in baggingVal function to produce res
-#'@param x_test A dataframe contains the features used by the bagginTest function
-#'@param y_test A vector contains the labels used by baggingTest function
-#'@export
-#'@example
-#'baggingTest(res, model_list, x_test, y_test)
+#' @param res A vector obtained by the baggingVal function,  the length is equal to the number of bootstrap done by the baggingVal function
+#' @param model_list The list is same as the one used in baggingVal function to produce res
+#' @param x_test A dataframe contains the features used by the bagginTest function
+#' @param y_test A vector contains the labels used by baggingTest function
+#' @export
+#' @example
+#' baggingTest(res, model_list, x_test, y_test)
 
 baggingTest <- function(res, model_list, x_test, y_test){
   ## The start point and end point of the res used in baggingVal
@@ -137,8 +137,21 @@ baggingTest <- function(res, model_list, x_test, y_test){
   return(bagging_store)
 }
 
+#' Performance evaluation function
+#'
+#' This function is used to evaluate the performance of a series of models trained by R keras
+#' @param model_list A list of neural network models object returned by keras R
+#' @param x_test A dataframe contains the features used by the performanceEvaluate function
+#' @param y_test A vector contains the labels used by baggingTest function
+#' @export
+#' @example
+#' performanceEvaluate(model_list, x_test, y_test)
 
-performanceEvaluate <- function(model_list, x_test, y_test, start_pos, end_pos){
+performanceEvaluate <- function(model_list, x_test, y_test){
+  ## The start point and end poitn of the evaluation procedure
+  start_pos = 1
+  end_pos = length(model_list)
+
   #Number of the candidate models
   model_num = length(model_list)
 

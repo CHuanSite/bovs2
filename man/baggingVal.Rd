@@ -13,7 +13,7 @@ baggingVal(model_list, x_val, y_val, iteration = 1000)
 
 \item{iteration}{the total number of bootstrap to be used, the default value is 1000}
 
-\item{model}{the list of deep learning models returned by model in keras R}
+\item{model}{the list of deep learning models object returned by model in keras R}
 }
 \description{
 This function allows you to do bagging on the validation set
