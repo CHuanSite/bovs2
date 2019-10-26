@@ -64,7 +64,7 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
 #' @import keras tidyverse
 #' @export
 
-baggingTest <- function(res, model_list, x_test, y_test){
+baggingTest <- function(res, model_list, x_test, y_test, iteration = 1000){
   ## The start point and end point of the res used in baggingVal
   start_pos = 1
   end_pos = length(res)
