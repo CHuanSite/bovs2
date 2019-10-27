@@ -18,9 +18,15 @@ To obatin the latest version of the `bovs2` package, access the following site
 devtools::install_github("CHuanSite/bovs2")
 ```
 ## Example
+Install packages `keras`, `bovs2`
+```
+library(keras)
+library(bovs2)
+```
+
 Load **mnistData** data into R 
 ```
-load(mnistData)
+data(mnistData)
 x_train = mnistData$x_train
 y_train = mnistData$y_train
 x_val = mnistData$x_val
@@ -95,3 +101,5 @@ sum(model1 %>% predict_class(x_test) == testResult)
 sum(model2 %>% predict_class(x_test) == testResult)
 ```
 
+mnistData$x_train = mnistData[[1]]
+mnistData$y_train = mnistData[[2]]
