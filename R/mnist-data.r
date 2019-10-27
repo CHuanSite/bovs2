@@ -4,10 +4,10 @@
 #'
 #' @docType data
 #'
-#' @usage data(mnist)
+#' @usage data(mnistData)
 #'
 #' @keywords datasets
 #'
 #' @examples
-#' data(mnist)
-"mnist"
+#' data(mnistData)
+"mnistData"
