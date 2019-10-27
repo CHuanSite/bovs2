@@ -14,7 +14,6 @@ The main idea behind **bovs** algorithm is instead of doing bagging on the train
 ## Installation
 To obatin the latest version of the `bovs2` package, access the following site
 ```
-#install.packages("devtools")
 devtools::install_github("CHuanSite/bovs2")
 ```
 ## Example
@@ -24,7 +23,7 @@ library(keras)
 library(bovs2)
 ```
 
-Load **mnistData** data into R 
+Load **mnistData** data into R, 
 ```
 data(mnistData)
 x_train = mnistData$x_train
@@ -35,23 +34,7 @@ x_test = mnistData$x_test
 y_test = mnistData$y_test
 ```
 
-Reshape and rescale data
-```
-# reshape
-x_train <- array_reshape(x_train, c(nrow(x_train), 784))
-x_val <- array_reshape(x_val, c(nrow(x_val), 784))
-x_test <- array_reshape(x_test, c(nrow(x_test), 784))
-
-# rescale
-x_train <- x_train / 255
-x_val <- x_val / 255
-x_test <- x_test / 255
-y_train <- to_categorical(y_train, 10)
-y_val <- to_categorical(y_val, 10)
-y_test <- to_categorical(y_test, 10)
-```
-
-Train models
+Train models in keras with different model architectures,
 ```
 model_list = list()
 ## The structure of the model
@@ -87,19 +70,17 @@ for(i in 1 : length(unitsNumber)){
 
 ```
 
-Apply bovs to the data
+Apply **bovs** to the data
 ```
-valResult = baggingVal(list(model1, model2, model3), x_val, y_val)
-testResult = baggingTest(valResult, list(model1, model2, model3), x_test, y_test, iteration = 1000)
+valResult = baggingVal(model_list, x_val, y_val)
+testResult = baggingTest(valResult, model_list, x_test, y_test, iteration = 1000)
 ```
 
 Compare the results among three different models
 ```
 y_test = apply(y_test,1, which.max) - 1
 sum(testResult == y_test)
-sum(model1 %>% predict_class(x_test) == testResult)
-sum(model2 %>% predict_class(x_test) == testResult)
+sum(model_list[[1]] %>% predict_classes(x_test) == y_test)
+sum(model_list[[2]] %>% predict_classes(x_test) == y_test)
+sum(model_list[[2]] %>% predict_classes(x_test) == y_test)
 ```
-
-mnistData$x_train = mnistData[[1]]
-mnistData$y_train = mnistData[[2]]
