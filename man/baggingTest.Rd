@@ -4,7 +4,7 @@
 \alias{baggingTest}
 \title{baggingTest function}
 \usage{
-baggingTest(res, model_list, x_test, y_test)
+baggingTest(res, model_list, x_test, y_test, iteration = 1000)
 }
 \arguments{
 \item{res}{A vector obtained by the baggingVal function,  the length is equal to the number of bootstrap done by the baggingVal function}
@@ -14,6 +14,8 @@ baggingTest(res, model_list, x_test, y_test)
 \item{x_test}{A dataframe contains the features used by the bagginTest function}
 
 \item{y_test}{A vector contains the labels used by baggingTest function}
+
+\item{iteration}{Total number of iterations needed}
 }
 \description{
 This function allows you to make use of the training result obtained by bagginVal to test the performance of new model

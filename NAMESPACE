@@ -3,5 +3,6 @@
 export(baggingTest)
 export(baggingVal)
 export(performanceEvaluate)
+export(sortMaxFrequency)
 import(keras)
 import(tidyverse)

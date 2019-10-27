@@ -50,7 +50,16 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
   return(res)
 }
 
+#' sortMaxFrquency function
+#'
+#' This function allows to find the item that has the maximum frequency of appearance in a vector
+#'
+#' @param frequencyVec A vector contains the fequency of the appearance of the element
+#' @export
 
+sortMaxFrequency <- function(frequencyVec){
+  return(as.numeric(names(sort(table(frequencyVec),decreasing=TRUE))[1] ))
+}
 
 
 #'baggingTest function
@@ -61,6 +70,7 @@ baggingVal <- function(model_list, x_val, y_val, iteration = 1000){
 #' @param model_list The list is same as the one used in baggingVal function to produce res
 #' @param x_test A dataframe contains the features used by the bagginTest function
 #' @param y_test A vector contains the labels used by baggingTest function
+#' @param iteration Total number of iterations needed
 #' @import keras tidyverse
 #' @export
 
@@ -97,9 +107,13 @@ baggingTest <- function(res, model_list, x_test, y_test, iteration = 1000){
   }
 
   #Compute the predict result for the all the model obtained from the bootstrap samples
-  for(i in 1 : iteration){
+  for(i in start_pos : end_pos){
     result = cbind(result, result_test[[res[i]]])
   }
+
+  return(apply(result, 1, sortMaxFrequency))
+
+
 
   #Store the prediction result for each test sample on all the models
   result_freq = NULL
