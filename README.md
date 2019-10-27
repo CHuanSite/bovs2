@@ -17,13 +17,14 @@ To obatin the latest version of the `bovs2` package, access the following site
 devtools::install_github("CHuanSite/bovs2")
 ```
 ## Example
-Install packages `keras`, `bovs2`
+Load packages `keras`, `bovs2`, `tiyverse`
 ```
 library(keras)
 library(bovs2)
+library(tidyverse)
 ```
 
-Load **mnistData** data into R, 
+Load **mnistData** data into R, **mnistData** contains all the data needed to run this example, which is from the [MNIST](https://en.wikipedia.org/wiki/MNIST_database) dataset
 ```
 data(mnistData)
 x_train = mnistData$x_train
@@ -34,7 +35,7 @@ x_test = mnistData$x_test
 y_test = mnistData$y_test
 ```
 
-Train models in keras with different model architectures,
+Train models in keras with different model architectures, a small amount of models is used in this example,
 ```
 model_list = list()
 ## The structure of the model
@@ -57,8 +58,6 @@ for(i in 1 : length(unitsNumber)){
     metrics = c('accuracy')
   )
   
-  
-  
   history <- model %>% fit(
     x_train, y_train, 
     epochs = 30, batch_size = 128
@@ -73,6 +72,10 @@ for(i in 1 : length(unitsNumber)){
 Apply **bovs** to the data
 ```
 valResult = baggingVal(model_list, x_val, y_val)
+```
+
+Output the test result after the `valResult`
+```
 testResult = baggingTest(valResult, model_list, x_test, y_test, iteration = 1000)
 ```
 
